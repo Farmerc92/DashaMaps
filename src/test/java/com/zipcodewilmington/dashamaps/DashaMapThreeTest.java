@@ -4,11 +4,14 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.logging.Logger;
+
 public class DashaMapThreeTest {
 
     private DashaMapOne mapOne;
     private DashaMapTwo mapTwo;
     private DashaMapThree  mapThree;
+    private static final Logger LOGGER = Logger.getLogger(DashaMapThreeTest.class.getName());
 
     @Before
     public void init(){
@@ -60,5 +63,17 @@ public class DashaMapThreeTest {
         Integer actual = 10;
 
         Assert.assertEquals(expected, actual);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void deleteTest(){
+        LOGGER.info("\n" + mapThree.get("themselves"));
+        mapThree.delete("themselves");
+        mapThree.get("themselves");
+    }
+
+    @Test
+    public void isEmptyTest(){
+        Assert.assertFalse(mapThree.isEmpty());
     }
 }
