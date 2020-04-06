@@ -6,6 +6,5 @@ public interface HashMapX {
     public Integer get(String key);
     public boolean isEmpty();
     public long size();
-
     public int bucketSize(String key);
 }
